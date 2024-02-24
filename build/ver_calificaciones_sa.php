@@ -67,16 +67,16 @@
                       <li><a href="index_maestro.php">Bienvenida</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Materias <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Calificaciones SS <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="add_materias.php">Agregar materias</a></li>
-                      <li><a href="ver_materias.php">Ver materias</a></li>
+                      <li><a href="add_calificaciones_ss.php">Agregar Calificaciones</a></li>
+                      <li><a href="ver_calificaciones_ss.php">Ver Calificaciones</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-users"></i> Alumnos <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-users"></i> Calificaciones SA <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="add_alumno.php">Agregar alumnos</a></li>
-                      <li><a href="ver_alumnos.php">Ver alumnos</a></li>
+                      <li><a href="add_calificaciones_sa.php">Agregar Calificaciones</a></li>
+                      <li><a href="ver_calificaciones_sa.php">Ver Calificaciones</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -131,7 +131,7 @@
         <!-- page content -->
         <div class="right_col" role="main">
 
-    <p>tabla para ver las materias</p>
+    <p>tabla para ver las alumnos</p>
         </div>
         <!-- /page content -->
 
