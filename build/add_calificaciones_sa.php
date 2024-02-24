@@ -140,7 +140,7 @@
 								</div>
 								<div class="x_content">
 									<br />
-									<form data-parsley-validate class="form-horizontal form-label-left" action="cifrados/asimetrico.php" method="POST">
+									<form data-parsley-validate class="form-horizontal form-label-left" action="cifrados/calificaciones_sa.php" method="POST">
 
 										<div class="item form-group">
 											<label class="col-form-label col-md-3 col-sm-3 label-align">Matricula <span class="required">*</span>
@@ -190,7 +190,7 @@
 										<div class="item form-group">
 											<div class="col-md-6 col-sm-6 offset-md-3">
 												<button class="btn btn-primary" type="reset">Reiniciar</button>
-												<button type="submit" class="btn btn-success">Subir</button>
+												<button type="submit" class="btn btn-success"  name="enviar" id="enviar" >Subir</button>
 											</div>
 										</div>
 
