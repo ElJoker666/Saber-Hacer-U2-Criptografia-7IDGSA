@@ -6,7 +6,7 @@ if (isset($_POST['enviar']))
     $matricula = $_POST['matricula'];
     $nombre = $_POST['nombre'];
     $email = $_POST['email'];
-    $psw = $_POST['psw'];
+    $psw = md5($_POST['psw']);
 
     if (!empty($nombre) && !empty($matricula) && !empty($email))
     {  
@@ -58,7 +58,7 @@ if (isset($_POST['enviar']))
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form method="post" role="form" action="inicio.php">
+            <form method="post" action="inicio.php">
             <h1>Portal UTC <i class="fa fa-user"></i></h1>
               <div>
                 <input type="text" class="form-control" name="matricula" placeholder="Matricula" required="" />
