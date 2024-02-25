@@ -1,3 +1,30 @@
+<?php
+require 'db_conexion.php';
+
+if (isset($_POST['enviar'])) 
+{  
+    $matricula = $_POST['matricula'];
+    $nombre = $_POST['nombre'];
+    $email = $_POST['email'];
+    $psw = $_POST['psw'];
+
+    if (!empty($nombre) && !empty($matricula) && !empty($email))
+    {  
+        $sql = $cnnPDO->prepare("INSERT INTO login (matricula, nombre, email, psw) VALUES (:matricula, :nombre, :email, :psw)");
+        
+        $sql->bindParam(':matricula', $matricula);
+        $sql->bindParam(':nombre', $nombre);
+        $sql->bindParam(':email', $email);
+        $sql->bindParam(':psw', $psw);
+
+        $sql->execute();
+        unset($sql);
+        unset($cnnPDO);
+        header("location:login.php");
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -64,25 +91,25 @@
 
         <div id="register" class="animate form registration_form">
           <section class="login_content">
-            <form>
+          <form  method="post" id="form">
               <h1>Crear cuenta <i class="fa fa-users"></i></h1>
               <div>
-                <input type="text" class="form-control" placeholder="Matricula" required="" />
+                <input type="text" class="form-control" name="matricula" placeholder="Matricula" required="" />
               </div>
               <div>
-                <input type="text" class="form-control" placeholder="Nombre completo" required="" />
+                <input type="text" class="form-control" name="nombre" placeholder="Nombre completo" required="" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
+                <input type="email" class="form-control" name="email" placeholder="Email" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Contraseña" required="" />
+                <input type="password" class="form-control" name="psw" placeholder="Contraseña" required="" />
               </div>
               <div>
                 <input type="password" class="form-control" placeholder="Confirmacion de contraseña" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Enviar</a>
+              <button type="submit" class="btn btn btn-lg px-3" name="enviar" id="enviar">Crear</button>
               </div>
 
               <div class="clearfix"></div>
