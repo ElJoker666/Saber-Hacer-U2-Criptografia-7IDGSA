@@ -54,7 +54,7 @@ session_start();
                 <img src="images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>Bienvenide,</span>
                 <h2><?php echo $_SESSION['nombre']; ?></h2>
               </div>
             </div>

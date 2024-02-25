@@ -54,7 +54,7 @@ session_start();
                 <img src="images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
+                <span>Bienvenide,</span>
                 <h2><?php echo $_SESSION['nombre']; ?></h2>
               </div>
             </div>
@@ -136,111 +136,111 @@ session_start();
         <!-- page content -->
         <div class="right_col" role="main">
 
-        <?php
-$claveSecreta = "bin2hex(random_bytes(16))";
-$consulta = "SELECT * FROM calificaciones_ss";
-$resultado = $cnnPDO->query($consulta);
+                                  <?php
+                                        $claveSecreta = "bin2hex(random_bytes(16))";
+                                          $consulta = "SELECT * FROM calificaciones_ss";
+                          $resultado = $cnnPDO->query($consulta);
 
-echo '<div class="col-md-12 col-sm-12 ">';
-echo '<div class="x_panel">';
-echo '<div class="x_title">';
-echo '<h2>Tabla de calificaciones <small>con cifrado simétrico</small></h2>';
-echo '<div class="clearfix"></div>';
-echo ' </div>';
-echo '<div class="x_content">';
-echo '<table class="table">';
-echo '<thead>';
-echo '<tr>';
-echo '<th>#</th>';
-echo '<th>Matricula</th>';
-echo '<th>Nombre</th>';
-echo '<th>Email</th>';
-echo '<th>Materias</th>';
-echo '<th>Calificacion</th>';
-echo '<th>Mensaje</th>';
-echo '</tr>';
-echo '</thead>';
-echo '<tbody>';
+                          echo '<div class="col-md-12 col-sm-12 ">';
+                          echo '<div class="x_panel">';
+                          echo '<div class="x_title">';
+                          echo '<h2>Tabla de calificaciones <small>con cifrado simétrico</small></h2>';
+                          echo '<div class="clearfix"></div>';
+                          echo ' </div>';
+                          echo '<div class="x_content">';
+                          echo '<table class="table">';
+                          echo '<thead>';
+                          echo '<tr>';
+                          echo '<th>#</th>';
+                          echo '<th>Matricula</th>';
+                          echo '<th>Nombre</th>';
+                          echo '<th>Email</th>';
+                          echo '<th>Materias</th>';
+                          echo '<th>Calificacion</th>';
+                          echo '<th>Mensaje</th>';
+                          echo '</tr>';
+                          echo '</thead>';
+                          echo '<tbody>';
 
-while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
-    echo '<tr>';
-    echo '<th scope="row">' . $fila['id'] . '</th>';
-    echo '<td>';
+                          while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
+                              echo '<tr>';
+                              echo '<th scope="row">' . $fila['id'] . '</th>';
+                              echo '<td>';
 
-    $matricula_cifrado_64 = $fila['matricula'];
-    $matricula_descifrado = openssl_decrypt(
-        base64_decode($matricula_cifrado_64),
-        'aes-256-cbc',
-        $claveSecreta,
-        0,
-        substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
-    );
-    echo $matricula_descifrado;
+                              $matricula_cifrado_64 = $fila['matricula'];
+                              $matricula_descifrado = openssl_decrypt(
+                                  base64_decode($matricula_cifrado_64),
+                                  'aes-256-cbc',
+                                  $claveSecreta,
+                                  0,
+                                  substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
+                              );
+                              echo $matricula_descifrado;
 
-    echo '</td>';
-    echo "<td>" . $fila['nombre'] . '</td>';
-    echo '<td>';
+                              echo '</td>';
+                              echo "<td>" . $fila['nombre'] . '</td>';
+                              echo '<td>';
 
-    $correo_cifrado_64 = $fila['email'];
-    $correo_descifrado = openssl_decrypt(
-        base64_decode($correo_cifrado_64),
-        'aes-256-cbc',
-        $claveSecreta,
-        0,
-        substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
-    );
-    echo $correo_descifrado;
+                              $correo_cifrado_64 = $fila['email'];
+                              $correo_descifrado = openssl_decrypt(
+                                  base64_decode($correo_cifrado_64),
+                                  'aes-256-cbc',
+                                  $claveSecreta,
+                                  0,
+                                  substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
+                              );
+                              echo $correo_descifrado;
 
-    echo '</td>';
-    echo '<td>';
+                              echo '</td>';
+                              echo '<td>';
 
-    $materia_cifrado_64 = $fila['materia'];
-    $materia_descifrado = openssl_decrypt(
-        base64_decode($materia_cifrado_64),
-        'aes-256-cbc',
-        $claveSecreta,
-        0,
-        substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
-    );
-    echo $materia_descifrado;
+                              $materia_cifrado_64 = $fila['materia'];
+                              $materia_descifrado = openssl_decrypt(
+                                  base64_decode($materia_cifrado_64),
+                                  'aes-256-cbc',
+                                  $claveSecreta,
+                                  0,
+                                  substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
+                              );
+                              echo $materia_descifrado;
 
-    echo '</td>';
-    echo '<td>';
+                              echo '</td>';
+                              echo '<td>';
 
-    $calificacion_cifrado_64 = $fila['calificacion'];
-    $calificacion_descifrado = openssl_decrypt(
-        base64_decode($calificacion_cifrado_64),
-        'aes-256-cbc',
-        $claveSecreta,
-        0,
-        substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
-    );
-    echo $calificacion_descifrado;
+                              $calificacion_cifrado_64 = $fila['calificacion'];
+                              $calificacion_descifrado = openssl_decrypt(
+                                  base64_decode($calificacion_cifrado_64),
+                                  'aes-256-cbc',
+                                  $claveSecreta,
+                                  0,
+                                  substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
+                              );
+                              echo $calificacion_descifrado;
 
-    echo '</td>';
-    echo '<td>';
+                              echo '</td>';
+                              echo '<td>';
 
-    $mensaje_cifrado_64 = $fila['mensaje'];
-    $mensaje_descifrado = openssl_decrypt(
-        base64_decode($mensaje_cifrado_64),
-        'aes-256-cbc',
-        $claveSecreta,
-        0,
-        substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
-    );
-    echo $mensaje_descifrado;
+                              $mensaje_cifrado_64 = $fila['mensaje'];
+                              $mensaje_descifrado = openssl_decrypt(
+                                  base64_decode($mensaje_cifrado_64),
+                                  'aes-256-cbc',
+                                  $claveSecreta,
+                                  0,
+                                  substr($claveSecreta, 0, 16) // Truncar a los primeros 16 bytes
+                              );
+                              echo $mensaje_descifrado;
 
-    echo '</td>';
-    echo '</tr>';
-}
+                              echo '</td>';
+                              echo '</tr>';
+                          }
 
-// Cerrar el bloque de la tabla
-echo '</tbody>';
-echo '</table>';
-echo '</div>';
-echo '</div>';
-echo '</div>';
-?>
+                          // Cerrar el bloque de la tabla
+                          echo '</tbody>';
+                          echo '</table>';
+                          echo '</div>';
+                          echo '</div>';
+                          echo '</div>';
+                          ?>
         </div>
         <!-- /page content -->
 
