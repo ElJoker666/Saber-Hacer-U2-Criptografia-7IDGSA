@@ -58,16 +58,16 @@ if (isset($_POST['enviar']))
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
-              <h1>Portal UTC <i class="fa fa-user"></i></h1>
+            <form method="post" role="form" action="inicio.php">
+            <h1>Portal UTC <i class="fa fa-user"></i></h1>
               <div>
-                <input type="text" class="form-control" placeholder="Matricula" required="" />
+                <input type="text" class="form-control" name="matricula" placeholder="Matricula" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Contraseña" required="" />
+                <input type="password" class="form-control" name="psw" placeholder="Contraseña" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html">Iniciar sesion</a>
+              <button type="submit" class="btn btn btn-lg px-3" name="login" id="login">Iniciar Sesión</button>
               </div>
 
               <div class="clearfix"></div>

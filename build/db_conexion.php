@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-$servername = "localhost:33065"; //cambien el nombre del server (tenia u error)
+$servername = "localhost"; //cambien el nombre del server (tenia u error)
 $username = "root";
 $password = "";
 $dbname = "portal_utc";
