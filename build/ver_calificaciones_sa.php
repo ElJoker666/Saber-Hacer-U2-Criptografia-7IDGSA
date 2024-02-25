@@ -1,3 +1,11 @@
+<?php
+  include("db_conexion.php");
+
+  $claveprivado = 0;
+    if (isset($_POST["descifrado_dato"])){
+      $claveprivado = $_POST['claveprivado'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -131,7 +139,97 @@
         <!-- page content -->
         <div class="right_col" role="main">
 
-    <p>tabla para ver las alumnos</p>
+                  <?php 
+
+                  $consulta = "SELECT * FROM calificaciones_sa";
+                  $resultado = $cnnPDO->query($consulta);
+
+                  echo '<div class="col-md-12 col-sm-12 ">';
+                  echo '<div class="x_panel">';
+                  echo '<div class="x_title">';
+                  echo '<h2>Tabla de calificaciones <small>con el modo asimetrico</small></h2>';
+                  echo '<div class="clearfix"></div>';
+                  echo ' </div>';
+                  echo '<div class="x_content">';
+                  echo '<table class="table">';
+                  echo '<thead>';
+                  echo '<tr>';
+                  echo '<th>#</th>';
+                  echo '<th>Matricula</th>';
+                  echo '<th>Nombre</th>';
+                  echo '<th>Email</th>';
+                  echo '<th>Materias</th>';
+                  echo '<th>Calificacion</th>';
+                  echo '<th>Mensaje</th>';
+                  echo '</tr>';
+                  echo '</thead>';
+                  echo '<tbody>';
+                      
+                  while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<tr>';
+                    echo '<th scope="row">' . $fila['id'] . '</th>';
+                    echo '<td>';
+
+                    $matricula_crifrado = $fila['matricula'];
+                    if ($claveprivado !="0"){
+                      $matricula_descifrado64 = base64_decode($matricula_crifrado);
+                      $keyprivada = openssl_pkey_get_private($claveprivado);
+                      openssl_public_decrypt($matricula_descifrado64, $matricula_descifrado, $keyprivada);
+                    }else{
+                      echo '<input type="password" class="col-md-3" disabled="disabled" placeholder="Disabled Input" value="$matricula_cifrado"></td>';
+                    }
+                    echo "<td>";
+                    echo '' . $fila['nombre'] . '</td>';
+                    echo '<td>';
+
+                    $email_crifrado = $fila['email'];
+                    if ($claveprivado !="0"){
+                      $email_descifrado64 = base64_decode($email_crifrado);
+                      $keyprivada = openssl_pkey_get_private($claveprivado);
+                      openssl_public_decrypt($email_descifrado64, $email_descifrado, $keyprivada);
+                    }else{
+                      echo '<input type="password" class="col-md-3" disabled="disabled" placeholder="Disabled Input" value="$email_cifrado"></td>';
+                    }
+                    echo '<td>';
+
+                    $materia_crifrado = $fila['materia'];
+                    if ($claveprivado !="0"){
+                      $materia_descifrado64 = base64_decode($materia_crifrado);
+                      $keyprivada = openssl_pkey_get_private($claveprivado);
+                      openssl_public_decrypt($materia_descifrado64, $materia_descifrado, $keyprivada);
+                    }else{
+                      echo '<input type="password" class="col-md-3" disabled="disabled" placeholder="Disabled Input" value="$materia_cifrado"></td>';
+                    }
+                    echo '<td>';
+
+                    $calificacion_crifrado = $fila['calificacion'];
+                    if ($claveprivado !="0"){
+                      $calificacion_descifrado64 = base64_decode($calificacion_crifrado);
+                      $keyprivada = openssl_pkey_get_private($claveprivado);
+                      openssl_public_decrypt($calificacion_descifrado64, $calificacion_descifrado, $keyprivada);
+                    }else{
+                      echo '<input type="password" class="col-md-3" disabled="disabled" placeholder="Disabled Input" value="$calificacion_cifrado"></td>';
+                    }
+                    echo '<td>';
+
+                      $mensaje_crifrado = $fila['mensaje'];
+                    if ($claveprivado !="0"){
+                      $mensaje_descifrado64 = base64_decode($mensaje_crifrado);
+                      $keyprivada = openssl_pkey_get_private($claveprivado);
+                      openssl_public_decrypt($mensaje_descifrado64, $mensaje_descifrado, $keyprivada);
+                    }else{
+                      echo '<input type="password" class="col-md-3" disabled="disabled" placeholder="Disabled Input" value="$mensaje_cifrado"></td>';
+                    }
+                    echo '</tbody>';
+                  // Cerrar el bloque de la tabla
+                    echo '</table>';
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
+
+                    
+                }
+                ?>
         </div>
         <!-- /page content -->
 
