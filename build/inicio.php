@@ -5,7 +5,7 @@ if (isset($_POST['login'])) {
     require 'db_conexion.php';
 
     $matricula = $_POST['matricula'];
-    $psw = $_POST['psw'];
+    $psw = md5($_POST['psw']);
 
     $query = $cnnPDO->prepare('SELECT * FROM login WHERE matricula=:matricula AND psw=:psw');
 
@@ -23,8 +23,11 @@ if (isset($_POST['login'])) {
         $_SESSION['email'] = $campo['email'];
         $_SESSION['psw'] = $campo['psw'];
 
-        header("location:index2.php");
+        header("location:index_maestro.php");
     } 
+    else{
+        header("location:login.php");
+    }
 }
 ob_end_flush();
 ?>
