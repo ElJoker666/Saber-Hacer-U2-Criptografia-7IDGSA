@@ -1,3 +1,7 @@
+<?php 
+require_once 'db_conexion.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,7 +54,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><?php echo $_SESSION['nombre']; ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -115,7 +119,7 @@
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/user.png" alt="">John Doe
+                    <img src="images/user.png" alt=""><?php echo $_SESSION['nombre']; ?>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Perfil</a>
